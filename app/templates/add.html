@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Data</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Tambah Data</h1>
+        <form method="post" action="/add">
+            <div class="form-group">
+                <label for="name">Nama:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="c1">Kriteria A1:</label>
+                <input type="text" class="form-control" id="c1" name="c1">
+            </div>
+            <div class="form-group">
+                <label for="c2">Kriteria A2:</label>
+                <input type="text" class="form-control" id="c2" name="c2">
+            </div>
+            <div class="form-group">
+                <label for="c3">Kriteria A3:</label>
+                <input type="text" class="form-control" id="c3" name="c3">
+            </div>
+            <div class="form-group">
+                <label for="c4">Kriteria B1:</label>
+                <input type="text" class="form-control" id="c4" name="c4">
+            </div>
+            <div class="form-group">
+                <label for="c5">Kriteria B2:</label>
+                <input type="text" class="form-control" id="c5" name="c5">
+            </div>
+            <div class="form-group">
+                <label for="c6">Kriteria B3</label>
+                <input type="text" class="form-control" id="c6" name="c6">
+            </div>
+            <button type="submit" class="btn btn-primary btn-save">Simpan & Generate</button>
+        </form>
+    </div>
+</body>
+</html>

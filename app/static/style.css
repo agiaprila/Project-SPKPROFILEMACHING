@@ -1,0 +1,54 @@
+/* style.css */
+
+/* Style untuk navbar */
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.navbar-brand:hover, .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+/* Style untuk judul halaman */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Style untuk tombol "Tambah Data" */
+.btn-add {
+    margin-bottom: 20px;
+}
+
+/* Style untuk tabel data */
+.table {
+    width: 100%;
+}
+
+.table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Style untuk tombol aksi (Edit dan Delete) di dalam tabel */
+.btn-action {
+    margin-right: 5px;
+}
+
+/* Style untuk form tambah dan edit data */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Style untuk tombol "Simpan" di form */
+.btn-save {
+    margin-top: 20px;
+}

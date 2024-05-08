@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPK ASDOS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <style>
+        /* Tambahkan gaya khusus di sini */
+        .jumbotron {
+            background-color: #f4f4f4;
+            color: #333333;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: #fc7335;
+        }
+        .feature-title {
+            color: #fc7335;
+        }
+        .feature-description {
+            color: #777777;
+        }
+        .card {
+            background-color: #ffffff;
+            border: none;
+        }
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .background-jumbo{
+            background-image: url('../static/assets/rawpixel-558596-unsplash.jpg');
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand font-weight-bold " href="/">SIAP~ASDOS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link font-weight-bold" href="/home">Home</a>
+                </li>
+                <li class="nav-item active ">
+                    <a class="nav-link text-warning font-weight-bold" href="/">Master Data</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Landing Page Content -->
+    <div class="container mt-5">
+        <div class="jumbotron text-center background-jumbo">
+            <h1 class="display-4 text-white font-weight-bold">Selamat Datang di Siap Asdos!</h1>
+            <p class="lead text-white font-weight-bold">Kami menyediakan layanan pengambilan keputusan untuk Pemilihan Asisten Dosen Anda dengan mudah.</p>
+            <hr class="my-4">
+            <p class="text-white">Silakan navigasikan melalui menu di atas untuk memilih siapa asisten dosen terbaik Anda.</p>
+        </div>
+        
+        <!-- Fitur-fitur -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 bg-light">
+                    <div class="card-body text-center">
+                        <span class="feature-icon">&#128101;</span>
+                        <h5 class="card-title mt-3 mb-2 feature-title">Pendahuluan</h5>
+                        <p class="card-text feature-description">Deskripsi singkat tentang pendahuluan.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 bg-light">
+                    <div class="card-body text-center">
+                        <span class="feature-icon">&#128176;</span>
+                        <h5 class="card-title mt-3 mb-2 feature-title">Tujuan & Rumusan Masalah</h5>
+                        <p class="card-text feature-description">Deskripsi singkat tentang Tujuan.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 bg-light">
+                    <div class="card-body text-center">
+                        <span class="feature-icon">&#128222;</span>
+                        <h5 class="card-title mt-3 mb-2 feature-title">Biodata</h5>
+                        <p class="card-text feature-description">Deskripsi singkat tentang Biodata.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Script untuk Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
