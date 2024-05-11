@@ -76,5 +76,20 @@ def home():
 
 
 @app.route('/generate')
-def generate():
-    return render_template('generate.html')
+def calculate_profile(criteria_weights, criteria_values):
+    if len(criteria_weights) != len(criteria_values):
+        raise ValueError("Number of criteria weights must match number of criteria values")
+
+    # Hitung nilai total profil
+    total_score = sum(weight * value for weight, value in zip(criteria_weights, criteria_values))
+
+    return total_score
+
+# Contoh penggunaan
+criteria_weights = [0.2, 0.15, 0.1, 0.25, 0.2, 0.1]  # Bobot untuk masing-masing kriteria
+criteria_values = [8, 7, 6, 9, 8, 7]  # Nilai untuk masing-masing kriteria
+
+# Hitung profil berdasarkan kriteria dan nilai yang diberikan
+profile_score = calculate_profile(criteria_weights, criteria_values)
+
+print("Profile Score:", profile_score)
