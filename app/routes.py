@@ -86,8 +86,8 @@ def calculate_profile(criteria_weights, criteria_values):
     return total_score
 
 # Contoh penggunaan
-criteria_weights = [0.2, 0.15, 0.1, 0.25, 0.2, 0.1]  # Bobot untuk masing-masing kriteria
-criteria_values = [8, 7, 6, 9, 8, 7]  # Nilai untuk masing-masing kriteria
+criteria_weights = [3, 3, 4, 3, 3, 4]  # Bobot untuk masing-masing kriteria 
+criteria_values = [4, 5, 4, 3, 3, 3]  # Nilai untuk masing-masing kriteria
 
 # Hitung profil berdasarkan kriteria dan nilai yang diberikan
 profile_score = calculate_profile(criteria_weights, criteria_values)
