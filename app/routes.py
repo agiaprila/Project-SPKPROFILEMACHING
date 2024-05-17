@@ -24,9 +24,12 @@ def add():
         c5 = request.form['c5']
         c6 = request.form['c6']
 
+        #PERHITUNGANNYA
+        # bobot = c1+c2+c3+c4+c5+c6 
+
         # Masukkan data ke dalam database
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO asdos (name, c1, c2, c3, c4, c5, c6) VALUES (%s, %s, %s, %s, %s, %s, %s)", (name, c1, c2, c3, c4, c5, c6))
+        cur.execute("INSERT INTO asdos (name, c1, c2, c3, c4, c5, c6, bobot) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (name, c1, c2, c3, c4, c5, c6, bobot))
         mysql.connection.commit()
         cur.close()
         flash('Data berhasil ditambahkan', 'success')
@@ -74,6 +77,15 @@ def delete(id):
 def home():
     return render_template ('home.html')
 
+@app.route('/')
+def index():
+    # Mendapatkan data keluarga dari database
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM asdos ORDER BY bobot DESC")
+    data = cur.fetchall()
+    cur.close()
+    return render_template('index.html', data=data)
+
 
 @app.route('/generate')
 def calculate_profile(criteria_weights, criteria_values):
@@ -93,3 +105,6 @@ criteria_values = [4, 5, 4, 3, 3, 3]  # Nilai untuk masing-masing kriteria
 profile_score = calculate_profile(criteria_weights, criteria_values)
 
 print("Profile Score:", profile_score)
+
+
+#select by id baru di order by 

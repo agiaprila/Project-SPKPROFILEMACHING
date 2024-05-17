@@ -8,6 +8,9 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 
+
+app.config['SECRET_KEY'] = 'my-s3cret-key'
+
 # Inisialisasi koneksi MySQL
 mysql = MySQL(app)
 
