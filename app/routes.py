@@ -17,15 +17,15 @@ def add():
     if request.method == 'POST':
         # Ambil data dari form tambah
         name = request.form['name']
-        c1 = request.form['c1']
-        c2 = request.form['c2']
-        c3 = request.form['c3']
-        c4 = request.form['c4']
-        c5 = request.form['c5']
-        c6 = request.form['c6']
+        c1 = float(request.form['c1'])
+        c2 = float(request.form['c2'])
+        c3 = float(request.form['c3'])
+        c4 = float(request.form['c4'])
+        c5 = float(request.form['c5'])
+        c6 = float(request.form['c6'])
 
         #PERHITUNGANNYA
-        bobot = c1+c2+c3+c4+c5+c6 
+        bobot = ((((c1 + c2) / 2) * 0.6) + (c3 * 0.4)) * 0.7 + ((((c5 + c6) / 2) * 0.6) + (c4 * 0.4)) * 0.3
 
         # Masukkan data ke dalam database
         cur = mysql.connection.cursor()
