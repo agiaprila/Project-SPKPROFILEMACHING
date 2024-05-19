@@ -7,7 +7,7 @@ from app import app, mysql
 def index():
     # Mendapatkan data keluarga dari database
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM asdos")
+    cur.execute("SELECT * FROM asdos ORDER BY bobot DESC")
     data = cur.fetchall()
     cur.close()
     return render_template('index.html', data=data)
@@ -25,7 +25,7 @@ def add():
         c6 = request.form['c6']
 
         #PERHITUNGANNYA
-        # bobot = c1+c2+c3+c4+c5+c6 
+        bobot = c1+c2+c3+c4+c5+c6 
 
         # Masukkan data ke dalam database
         cur = mysql.connection.cursor()
@@ -47,10 +47,11 @@ def edit(id):
         c4 = request.form['c4']
         c5 = request.form['c5']
         c6 = request.form['c6']
+        
 
         # Ubah data dalam database
         cur = mysql.connection.cursor()
-        cur.execute("UPDATE asdos SET name = %s, c1 = %s, c2 = %s, c3 = %s, c4 = %s, c5 = %s, c6 = %s WHERE id = %s", (name, c1, c2, c3, c4, c5, c6, id))
+        cur.execute("UPDATE asdos SET name = %s, c1 = %s, c2 = %s, c3 = %s, c4 = %s, c5 = %s, c6 = %s   WHERE id = %s", (name, c1, c2, c3, c4, c5, c6,  id ))
         mysql.connection.commit()
         cur.close()
         flash('Data berhasil diubah', 'success')
@@ -77,34 +78,5 @@ def delete(id):
 def home():
     return render_template ('home.html')
 
-@app.route('/')
-def index():
-    # Mendapatkan data keluarga dari database
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM asdos ORDER BY bobot DESC")
-    data = cur.fetchall()
-    cur.close()
-    return render_template('index.html', data=data)
 
 
-@app.route('/generate')
-def calculate_profile(criteria_weights, criteria_values):
-    if len(criteria_weights) != len(criteria_values):
-        raise ValueError("Number of criteria weights must match number of criteria values")
-
-    # Hitung nilai total profil
-    total_score = sum(weight * value for weight, value in zip(criteria_weights, criteria_values))
-
-    return total_score
-
-# Contoh penggunaan
-criteria_weights = [3, 3, 4, 3, 3, 4]  # Bobot untuk masing-masing kriteria 
-criteria_values = [4, 5, 4, 3, 3, 3]  # Nilai untuk masing-masing kriteria
-
-# Hitung profil berdasarkan kriteria dan nilai yang diberikan
-profile_score = calculate_profile(criteria_weights, criteria_values)
-
-print("Profile Score:", profile_score)
-
-
-#select by id baru di order by 
