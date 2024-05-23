@@ -3,6 +3,20 @@
 from flask import render_template, request, redirect, flash
 from app import app, mysql
 
+def calculate_bobot(gap):
+    mapping = {
+        0: 5.0,
+        1: 4.5,
+        -1: 4.0,
+        2: 3.5,
+        -2: 3.0,
+        3: 2.5,
+        -3: 2.0,
+        4: 1.5,
+        -4: 1.0
+    }
+    return mapping.get(gap, 0)  # Default value 0 if gap is not in the mapping
+
 @app.route('/')
 def index():
     # Mendapatkan data keluarga dari database
@@ -11,6 +25,9 @@ def index():
     data = cur.fetchall()
     cur.close()
     return render_template('index.html', data=data)
+
+
+
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -24,8 +41,24 @@ def add():
         c5 = float(request.form['c5'])
         c6 = float(request.form['c6'])
 
-        #PERHITUNGANNYA
-        bobot = ((((c1 + c2) / 2) * 0.6) + (c3 * 0.4)) * 0.7 + ((((c5 + c6) / 2) * 0.6) + (c4 * 0.4)) * 0.3
+        #gap
+        gap_1 = c1-3
+        gap_2 = c2-3
+        gap_3 = c3-4
+        gap_4 = c4-3
+        gap_5 = c5-3
+        gap_6 = c6-4
+
+
+        # Hitung bobot untuk masing-masing nilai bobot
+        bobot_c1 = calculate_bobot(gap_1)
+        bobot_c2 = calculate_bobot(gap_2)
+        bobot_c3 = calculate_bobot(gap_3)
+        bobot_c4 = calculate_bobot(gap_4)
+        bobot_c5 = calculate_bobot(gap_5)
+        bobot_c6 = calculate_bobot(gap_6)
+
+        bobot = ((((bobot_c1 + bobot_c2) / 2) * 0.6) + (bobot_c3 * 0.4)) * 0.7 + ((((bobot_c5 + bobot_c6) / 2) * 0.6) + (bobot_c4 * 0.4)) * 0.3
 
         # Masukkan data ke dalam database
         cur = mysql.connection.cursor()
