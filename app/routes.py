@@ -49,7 +49,6 @@ def add():
         gap_5 = c5-3
         gap_6 = c6-4
 
-
         # Hitung bobot untuk masing-masing nilai bobot
         bobot_c1 = calculate_bobot(gap_1)
         bobot_c2 = calculate_bobot(gap_2)
@@ -110,6 +109,18 @@ def delete(id):
 @app.route('/home')
 def home():
     return render_template ('home.html')
+
+@app.route('/tujuan')
+def tujuan():
+    return render_template ('tujuan.html')
+
+@app.route('/biodata')
+def biodata():
+    return render_template ('biodata.html')
+
+@app.route('/pendahuluan')
+def pendahuluan():
+    return render_template ('pendahuluan.html')
 
 
 
